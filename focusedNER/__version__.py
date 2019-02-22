@@ -1,0 +1,6 @@
+__title__ = 'focusedNER'
+__description__ = '中心命名实体识别.'
+__version__ = '0.0.1'
+__author__ = 'Haiker Sun'
+__author_email__ = 'haizhou.uestc2011@gmail.com'
+__license__ = 'GUN 3.0'
