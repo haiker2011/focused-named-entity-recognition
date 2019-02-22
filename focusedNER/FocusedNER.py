@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
+
 """
 focusedNER.FocusedNER
 ~~~~~~~~~~~~~~~~
 模块提供中心命名实体识别功能.
 """
+
+from utils import Utils
 
 class FocusedNER(object):
 
@@ -31,6 +35,9 @@ class FocusedNER(object):
             :rtype: json string
             """
 
+            # 0. 解析json
+
+
             # 1. 从content获取title，判断命名实体在不在标题中，在设置为1
 
             # 2. 计算每个命名实体频次（或者逆文档频次）#
@@ -44,8 +51,11 @@ class FocusedNER(object):
             # 6. 每个命名实体是否出现在段落第一句话中，在设置为1
 
             # 7. 每一篇文档中命名实体个数 #
+            nerCount = Utils.nerCount(nerStringList)
+            print(nerCount)
 
             # 8. 文档标题是否含有命名实体，含有设置为1
+            print(Utils.titleHasNER(nerStringList, ['hello', 'world']))
 
 
 
@@ -57,4 +67,4 @@ class FocusedNER(object):
 
 if __name__=="__main__":
       focused_ner = FocusedNER()
-      print(focused_ner.getFocusedNER(['hello', 'world'], 'hello'))
+      focused_ner.getFocusedNER(['hello', 'world'], 'hello')
