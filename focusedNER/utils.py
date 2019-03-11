@@ -9,8 +9,13 @@ class Utils(object):
             :return: 中心命名实体列表
             :rtype: list bool
             """
-
-            isInTitle = [0, 0]
+            isInTitle = []
+            for nerString in nerStringList:
+                  if nerString in title:
+                        isInTitle.append(True)
+                  else:
+                        isInTitle.append(False)
+            
             return isInTitle
       
       @staticmethod
@@ -21,8 +26,12 @@ class Utils(object):
             :return: 获取每个命名实体的频次
             :rtype: list int
             """
+            nerFrequency = []
+            for nerString in nerStringList:
+                  eachNerFrequency = (len(content['title'].split(nerString))-1) + (len(content['content'].split(nerString))-1)
+                  nerFrequency.append(eachNerFrequency)
 
-            nerFrequency = [10, 11]
+            
             return nerFrequency
 
       @staticmethod
@@ -44,3 +53,13 @@ class Utils(object):
             :rtype: int
             """
             return len(nerStringList)
+
+      @staticmethod
+      def allFocusedNER(focusedNER):
+            r"""返回每篇文章中核心命名实体列表.
+            :param focusedNERList: 候选命名实体列表.
+            :return: 中心命名实体列表
+            :rtype: list string
+            """
+
+            return [i for i in focusedNER if i > 0]
