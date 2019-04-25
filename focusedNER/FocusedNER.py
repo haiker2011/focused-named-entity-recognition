@@ -70,9 +70,6 @@ class FocusedNER(object):
             print("titleHasNER: ")
             print(Utils.titleHasNER(nerStringList, ['hello', 'world']))
 
-
-
-
             nerFeaturesJson = 'hello'
             return nerFeaturesJson
 
@@ -80,6 +77,12 @@ class FocusedNER(object):
 
 if __name__=="__main__":
       focused_ner = FocusedNER()
+      nerString = '{"result":[{"vpers":[{"v":"伊戈尔","w":1}],"vrgn":[{"v":"俄罗斯","w":2},{"v":"阿舒尔贝利","w":1}],"vorg":[],"vprvn":[],"vctry":[{"v":"俄罗斯","w":2}]}],"err_code":0,"err_desc":""}'
       content = '{"news_url":"http://example.com/","title":"hello world","abstrct":"balabala","content":"balabala","comments":[{"author":"abababab","content":"ababababab"},{"author":"abababab","content":"ababababab"}]}'
-      
+      nerStringList = []
+      ner_json = json.loads(nerString)
+      print("ner_json: ")
+      print(ner_json)
+      print(ner_json['result'])
+
       focused_ner.getFocusedNER(['hello', 'world'], content)
